@@ -102,9 +102,9 @@ spec:
         # This selector should match the label you added to your FreeSWITCH pods
         - "--selector=hep-sidekick/enabled=true"
         # The address of your HOMER server
-        - "--homer-address=YOUR_HOMER_IP:9060"
+        - "-hs=YOUR_HOMER_IP:9060"
         # Optional: Custom arguments for the heplify agent
-        - "--heplify-args=-i any -m SIP -l 7"
+        - "--heplify-args=-i any"
 ```
 
 Save this manifest to a file (e.g., `hep-sidekick-deployment.yaml`) and apply it to your cluster:
