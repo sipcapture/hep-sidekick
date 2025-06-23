@@ -8,7 +8,7 @@
 
 ### Prerequisites
 
-- Go (version 1.18 or higher recommended)
+- Go (version 1.24 or higher recommended)
 - Access to a Kubernetes cluster (a valid `kubeconfig` file)
 
 ### Building
