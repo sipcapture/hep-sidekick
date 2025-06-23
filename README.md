@@ -2,7 +2,7 @@
 
 # hep-sidekick
 
-`hep-sidekick` is a Kubernetes tool for the High-Performance Stored Procedure (HEP) stack. It allows you to dynamically attach a `heplify` sniffing agent to existing pods in your cluster, providing real-time packet capture for your HOMER/SIPCAPTURE observability platform.
+`hep-sidekick` is a Kubernetes tool for the HEP stack. It allows you to dynamically attach a `heplify` sniffing agent to existing pods in your cluster, providing real-time packet capture for your HOMER/SIPCAPTURE observability platform.
 
 ## Getting Started
 
