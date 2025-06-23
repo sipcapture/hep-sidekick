@@ -17,10 +17,12 @@ import (
 func main() {
 	selector := flag.String("selector", "hep-sidekick/enabled=true", "Label selector to find pods to attach to.")
 	homerAddress := flag.String("homer-address", "127.0.0.1:9060", "Address of the HOMER server.")
+	heplifyArgs := flag.String("heplify-args", "-i any -t pcap", "A string of arguments to pass to the heplify container, e.g. '-i eth0 -m SIP'")
 	flag.Parse()
 
 	log.Printf("Using selector: %s", *selector)
 	log.Printf("Using HOMER address: %s", *homerAddress)
+	log.Printf("Using heplify args: %s", *heplifyArgs)
 
 	config, err := getConfig()
 	if err != nil {
@@ -32,7 +34,7 @@ func main() {
 		log.Fatalf("Error creating Kubernetes clientset: %v", err)
 	}
 
-	sk := sidekick.New(clientset, *selector, *homerAddress)
+	sk := sidekick.New(clientset, *selector, *homerAddress, *heplifyArgs)
 	pods, err := sk.ListPods(context.Background())
 	if err != nil {
 		log.Fatalf("Error listing pods: %v", err)

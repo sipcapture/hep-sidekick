@@ -35,6 +35,7 @@ You must also specify the address of your HOMER server where `heplify` will send
 
 - `--selector`: Label selector to find pods to attach to. (default: `hep-sidekick/enabled=true`)
 - `--homer-address`: Address of the HOMER server. (default: `127.0.0.1:9060`)
+- `--heplify-args`: A string of arguments to pass to the heplify container. (default: `"-i any -t pcap"`)
 
 ### Example
 
@@ -42,6 +43,20 @@ To attach to all pods with the label `app=my-voip-app` and send HEP packets to a
 
 ```bash
 ./hep-sidekick --selector="app=my-voip-app" --homer-address="10.0.0.1:9060"
+```
+
+### Customizing heplify Settings
+
+The `heplify` agent has many configuration options that can be controlled with command-line arguments. You can pass a custom set of arguments to the `heplify` containers using the `--heplify-args` flag.
+
+The `--homer-address` is handled separately, so you do not need to include the `-hs` flag in your custom arguments string.
+
+For example, to change the sniffing interface to `eth0` and set the capture mode to `SIP`, you could run:
+```bash
+./hep-sidekick \
+  --selector="app=my-voip-app" \
+  --homer-address="10.0.0.1:9060" \
+  --heplify-args="-i eth0 -m SIP"
 ```
 
 ## How it Works
